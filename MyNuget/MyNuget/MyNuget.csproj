@@ -1,0 +1,35 @@
+<Project Sdk="MSBuild.Sdk.Extras/2.1.2">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard1.0;Xamarin.iOS10;MonoAndroid90</TargetFrameworks>
+        <AssemblyName>Why</AssemblyName>
+            <PackOnBuild>true</PackOnBuild>
+        <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+        <DisableExtraReferences>true</DisableExtraReferences>
+           <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+           <PackageId>MyNuget</PackageId>
+           <PackageVersion>1.0.1</PackageVersion>
+           <Product>$(AssemblyName) ($(TargetFramework))</Product>
+        <RootNamespace>Why</RootNamespace>
+  </PropertyGroup>
+    
+    <ItemGroup>
+    <Compile Include="**\*.com.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <Compile Include="**\*.droid.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <Compile Include="**\*.ios.cs" />
+  </ItemGroup>
+
+
+
+
+</Project>
